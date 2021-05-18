@@ -9,7 +9,9 @@ import java.awt.Color;
 
 /**
  *
- * @author micha
+ * @author Michael Coitim 
+ * 
+ * +
  */
 public class TelaMensagem extends javax.swing.JFrame {
 
@@ -35,7 +37,7 @@ public class TelaMensagem extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtMenCri = new javax.swing.JTextField();
         btnDes = new javax.swing.JButton();
-        delocamento = new javax.swing.JSpinner();
+        deslocamento = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -57,6 +59,11 @@ public class TelaMensagem extends javax.swing.JFrame {
 
         btnCri.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCri.setText("criptografar");
+        btnCri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Mensagem criptografada");
@@ -72,7 +79,7 @@ public class TelaMensagem extends javax.swing.JFrame {
         btnDes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnDes.setText("descriptografar");
 
-        delocamento.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
+        deslocamento.setModel(new javax.swing.SpinnerNumberModel(1, 1, 26, 1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Deslocamento");
@@ -109,7 +116,7 @@ public class TelaMensagem extends javax.swing.JFrame {
                                         .addComponent(btnCri, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(83, 83, 83)
                                         .addComponent(btnDes, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(delocamento, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(deslocamento, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMen, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +144,7 @@ public class TelaMensagem extends javax.swing.JFrame {
                     .addComponent(txtMen, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(delocamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deslocamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -151,7 +158,7 @@ public class TelaMensagem extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtMenDes, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -169,6 +176,12 @@ public class TelaMensagem extends javax.swing.JFrame {
     private void txtMenDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenDesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMenDesActionPerformed
+
+    private void btnCriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriActionPerformed
+        
+        String mensagem =txtMen.getText();
+        int chave = Integer.parseInt(deslocamento.getValue().toString());
+    }//GEN-LAST:event_btnCriActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,7 +221,7 @@ public class TelaMensagem extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCri;
     private javax.swing.JButton btnDes;
-    private javax.swing.JSpinner delocamento;
+    private javax.swing.JSpinner deslocamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
