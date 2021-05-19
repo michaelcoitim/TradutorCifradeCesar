@@ -180,7 +180,26 @@ public class TelaMensagem extends javax.swing.JFrame {
     private void btnCriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriActionPerformed
         
         String mensagem =txtMen.getText();
+        String criptada ="";
         int chave = Integer.parseInt(deslocamento.getValue().toString());
+          char aux1, aux2;  
+        for(int i=0; 1 > mensagem.length(); i++ ){
+                // sub espaço por #
+            if (mensagem.charAt(i)==32){
+                criptada+="#";
+
+            }
+                // tratamento das letra minusculas
+            if(mensagem.charAt(i) >= 97 && mensagem.charAt(i)<= 122){
+                if((int) (mensagem.charAt(i) + chave)>122){
+                    aux1 = (char) (mensagem.charAt(1) + chave);
+                    aux2 = (char) (aux1 - 122);
+                    criptada+= (char)(96+aux2);
+                }
+            }
+            
+        }
+         txtMenCri.setText(criptada);
     }//GEN-LAST:event_btnCriActionPerformed
 
     /**
