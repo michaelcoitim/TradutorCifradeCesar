@@ -123,6 +123,7 @@
         <Property name="text" type="java.lang.String" value="digite  sua mensagem "/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtMenMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMenActionPerformed"/>
       </Events>
     </Component>
@@ -163,6 +164,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="descriptografar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="deslocamento">
       <Properties>

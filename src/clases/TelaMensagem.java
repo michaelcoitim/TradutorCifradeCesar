@@ -51,6 +51,11 @@ public class TelaMensagem extends javax.swing.JFrame {
         txtMen.setForeground(new java.awt.Color(51, 51, 51));
         txtMen.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtMen.setText("digite  sua mensagem ");
+        txtMen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMenMouseClicked(evt);
+            }
+        });
         txtMen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMenActionPerformed(evt);
@@ -78,6 +83,11 @@ public class TelaMensagem extends javax.swing.JFrame {
 
         btnDes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnDes.setText("descriptografar");
+        btnDes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesActionPerformed(evt);
+            }
+        });
 
         deslocamento.setModel(new javax.swing.SpinnerNumberModel(1, 1, 26, 1));
 
@@ -185,18 +195,19 @@ public class TelaMensagem extends javax.swing.JFrame {
         int chave = Integer.parseInt(deslocamento.getValue().toString());
           char aux1, aux2;  
            for(int i=0; i < mensagem.length(); i++ ){
+               
                 // sub espaço por #
             if (mensagem.charAt(i)==32){
-                criptada+="#";
+                criptada+=" ";
 
             }
              
                 // tratamento das letra minusculas
             if(mensagem.charAt(i) >= 97 && mensagem.charAt(i)<= 122){
                 if((int) (mensagem.charAt(i) + chave)>122){
-                    aux1 = (char) (mensagem.charAt(1) + chave);
+                    aux1 = (char) (mensagem.charAt(i) + chave);
                     aux2 = (char) (aux1 - 122);
-                    criptada= criptada+ (char)(96+aux2);
+                    criptada= criptada+ (char)(96 + aux2);
                     // retorno= criptada;
                     txtMenCri.setText(criptada);
                   
@@ -213,18 +224,48 @@ public class TelaMensagem extends javax.swing.JFrame {
                     if (mensagem.charAt(i) + chave > 90){
                         aux1= (char) (mensagem.charAt(i) + chave);
                         aux2 = (char) (aux1 -90);
-                         criptada= criptada+ (char)(aux2-64);
+                         criptada= criptada+ (char)(aux2+64);
+                         txtMenCri.setText(criptada);
                     }else{
                         criptada = criptada + (char)(mensagem.charAt(i)+ chave);
+                        txtMenCri.setText(criptada);
                     }
                     
-                }
+                }  // tratamento dos numeros 
+              if(mensagem.charAt(i) >=48 && mensagem.charAt(i) <=57){
+                    if(mensagem.charAt(i) + chave > 57){
+                       aux1 = (char) (mensagem.charAt(i) + chave);
+                       aux2 = (char) (aux1 -57) ;
+                       criptada= criptada + (char) ( 47+aux2);
+                        txtMenCri.setText(criptada);
+                        
+                    } else{
+                        criptada+= (char) (mensagem.charAt(i) + chave);
+                        txtMenCri.setText(criptada);
+                    }
+              }
             
-           
             
-            
+                      
         } 
     }//GEN-LAST:event_btnCriActionPerformed
+
+    private void txtMenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMenMouseClicked
+        txtMen.setText(" ");
+    }//GEN-LAST:event_txtMenMouseClicked
+
+    private void btnDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesActionPerformed
+        // traduz a mensagem criptografadas
+        String menCrip , mensResu;
+        menCrip= txtMenCri.getText();
+        int chave = Integer.parseInt(deslocamento.getValue().toString());
+        
+        
+        for(int i = 0; i < menCrip.length(); i++){
+            
+        }
+        
+    }//GEN-LAST:event_btnDesActionPerformed
 
     /**
      * @param args the command line arguments
