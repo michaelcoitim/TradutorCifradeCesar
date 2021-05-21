@@ -181,25 +181,49 @@ public class TelaMensagem extends javax.swing.JFrame {
         
         String mensagem =txtMen.getText();
         String criptada ="";
+        //sString retorno;
         int chave = Integer.parseInt(deslocamento.getValue().toString());
           char aux1, aux2;  
-        for(int i=0; 1 > mensagem.length(); i++ ){
+           for(int i=0; i < mensagem.length(); i++ ){
                 // sub espaço por #
             if (mensagem.charAt(i)==32){
                 criptada+="#";
 
             }
+             
                 // tratamento das letra minusculas
             if(mensagem.charAt(i) >= 97 && mensagem.charAt(i)<= 122){
                 if((int) (mensagem.charAt(i) + chave)>122){
                     aux1 = (char) (mensagem.charAt(1) + chave);
                     aux2 = (char) (aux1 - 122);
-                    criptada+= (char)(96+aux2);
+                    criptada= criptada+ (char)(96+aux2);
+                    // retorno= criptada;
+                    txtMenCri.setText(criptada);
+                  
+                }else{
+                    criptada= criptada + (char) (mensagem.charAt(i) + chave);
+                    //retorno= criptada;
+                    txtMenCri.setText(criptada);
+                    
                 }
-            }
             
-        }
-         txtMenCri.setText(criptada);
+            }
+                //Tratamento Letras mausculas
+                if (mensagem.charAt(i) >=65 && mensagem.charAt(i) <=90){
+                    if (mensagem.charAt(i) + chave > 90){
+                        aux1= (char) (mensagem.charAt(i) + chave);
+                        aux2 = (char) (aux1 -90);
+                         criptada= criptada+ (char)(aux2-64);
+                    }else{
+                        criptada = criptada + (char)(mensagem.charAt(i)+ chave);
+                    }
+                    
+                }
+            
+           
+            
+            
+        } 
     }//GEN-LAST:event_btnCriActionPerformed
 
     /**
