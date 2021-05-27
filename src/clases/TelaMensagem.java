@@ -196,7 +196,7 @@ public class TelaMensagem extends javax.swing.JFrame {
           char aux1, aux2;  
            for(int i=0; i < mensagem.length(); i++ ){
                
-                // sub espaço por #
+                // sub espaço por espacço
             if (mensagem.charAt(i)==32){
                 criptada+=" ";
 
@@ -257,11 +257,34 @@ public class TelaMensagem extends javax.swing.JFrame {
     private void btnDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesActionPerformed
         // traduz a mensagem criptografadas
         String menCrip , mensResu;
+        char aux1, aux2;
         menCrip= txtMenCri.getText();
+        mensResu="";
         int chave = Integer.parseInt(deslocamento.getValue().toString());
         
         
         for(int i = 0; i < menCrip.length(); i++){
+            //Tratamento espaco branco
+            if (menCrip.charAt(i)== 32){
+                mensResu+=" ";
+            }
+            
+            //Tratamento Letras Minúsculas
+            if(menCrip.charAt(i) >= 97 && menCrip.charAt(i) <=122){
+                if ((menCrip.charAt(i)- chave) <97){
+                     aux1 = (char) (menCrip.charAt(i) - chave);
+                     aux2 = (char) (aux1 + 122);
+                     mensResu= mensResu+ (char)(aux2 - 96);
+                    
+                    txtMenDes.setText(mensResu);
+                }else{
+                    mensResu= mensResu +(char)(menCrip.charAt(i)- chave);
+                    txtMenDes.setText(mensResu);
+                }
+            }
+            
+            
+            
             
         }
         
