@@ -194,6 +194,7 @@ public class TelaMensagem extends javax.swing.JFrame {
         //sString retorno;
         int chave = Integer.parseInt(deslocamento.getValue().toString());
           char aux1, aux2;  
+          // percorre a mensagem e troca oas caracteres 
            for(int i=0; i < mensagem.length(); i++ ){
                
                 // sub espaço por espacço
@@ -202,7 +203,7 @@ public class TelaMensagem extends javax.swing.JFrame {
 
             }
              
-                // tratamento das letra minusculas
+                // tratamento das letra Minúsculas
             if(mensagem.charAt(i) >= 97 && mensagem.charAt(i)<= 122){
                 if((int) (mensagem.charAt(i) + chave)>122){
                     aux1 = (char) (mensagem.charAt(i) + chave);
@@ -219,7 +220,7 @@ public class TelaMensagem extends javax.swing.JFrame {
                 }
             
             }
-                //Tratamento Letras mausculas
+                //Tratamento Letras Maiúsculas
                 if (mensagem.charAt(i) >=65 && mensagem.charAt(i) <=90){
                     if (mensagem.charAt(i) + chave > 90){
                         aux1= (char) (mensagem.charAt(i) + chave);
@@ -262,14 +263,14 @@ public class TelaMensagem extends javax.swing.JFrame {
         mensResu="";
         int chave = Integer.parseInt(deslocamento.getValue().toString());
         
-        
+        // percore a mensagem recebida e retorna a original (necessario saber a chave)
         for(int i = 0; i < menCrip.length(); i++){
             //Tratamento espaco branco
             if (menCrip.charAt(i)== 32){
                 mensResu+=" ";
             }
             
-            //Tratamento Letras Minúsculas
+            //tradução Letras Minúsculas
             if(menCrip.charAt(i) >= 97 && menCrip.charAt(i) <=122){
                 if ((menCrip.charAt(i)- chave) <97){
                      aux1 = (char) (menCrip.charAt(i) - chave);
@@ -282,9 +283,34 @@ public class TelaMensagem extends javax.swing.JFrame {
                     txtMenDes.setText(mensResu);
                 }
             }
-            
-            
-            
+                // Tradução Letras Minúsculas
+            if(menCrip.charAt(i) >= 65 && menCrip.charAt(i) <=90){
+                if ((menCrip.charAt(i)- chave) <65){
+                     aux1 = (char) (menCrip.charAt(i) - chave);
+                     aux2 = (char) (aux1 + 90);
+                     mensResu= mensResu+ (char)(aux2 - 64);
+                    
+                    txtMenDes.setText(mensResu);
+                }else{
+                    mensResu= mensResu +(char)(menCrip.charAt(i)- chave);
+                    txtMenDes.setText(mensResu);
+                }
+                
+                
+            }
+              // tratamento dos numeros 
+              if(menCrip.charAt(i) >=48 && menCrip.charAt(i) <=57){
+                    if(menCrip.charAt(i) - chave < 48){
+                       aux1 = (char) (menCrip.charAt(i) - chave);
+                       aux2 = (char) (aux1 +57) ;
+                       mensResu= mensResu + (char) (aux2 - 47);
+                        txtMenDes.setText(mensResu);
+                        
+                    } else{
+                        mensResu+= (char) (menCrip.charAt(i) - chave);
+                        txtMenDes.setText(mensResu);
+                    }
+              }   
             
         }
         
